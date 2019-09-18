@@ -5,7 +5,7 @@ DOCKER=docker
 DOCKER_IMG_NAME=butlite
 APP_VERSION=v0.1
 
-COMMIT_ID=$(shell git rev-parse --short head)
+COMMIT_ID=$(shell git rev-parse --short HEAD)
 BUILD_DATE=$(shell date '+%Y%m%d')
 DOCKER_REGISTRY=an63
 DOCKER_IMG_VERSION=$(APP_VERSION)-$(BUILD_DATE)-$(COMMIT_ID)
