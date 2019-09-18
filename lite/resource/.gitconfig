@@ -1,0 +1,82 @@
+[color]
+	ui = true
+[core]
+	editor = vim
+	autocrlf = input
+[help]
+	autocorrect = 0
+[merge]
+	tool = vimdiff
+[alias]
+	a = add
+	aa = add -A
+	ap = add -p
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	bD = branch -D
+	c = clone
+	ci = commit
+	cia = commit -a
+	ciam = commit -a -m
+	cim = commit -m
+	cn = clean -xnd
+	co = checkout
+	cob = checkout -b
+	cof = checkout --
+	com = checkout master
+	d = diff
+	ds = diff --staged
+	dw = diff -w
+	dW = diff -W
+	f = fetch
+	h = help
+	i = init
+	ignore = update-index --skip-worktree
+	l = log
+	la = log --pretty=format:'%h %ad - [%an] %s' --graph
+	lg = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lr = log --walk-reflogs
+	ls = ls-files
+	lsg = ls-files --other --ignored --exclude-standard
+	mg = merge
+	mgn = merge --no-ff
+	mgnm = merge --no-ff -m
+	mgs = merge --squash
+	mgt = mergetool
+	notice = update-index --no-skip-worktree
+	pl = pull
+	plo = pull origin
+	plom = pull origin master
+	ps = push
+	ps1 = push --set-upstream origin
+	psa = push --recurse-submodules=on-demand
+	psaa = push --all
+	pso = push origin
+	pst = push --tags
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase -i
+	rbs = rebase --skip
+	rl = reflog
+	rs = reset
+	rsh = reset --hard
+	rss = reset --soft
+	rt = remote
+	rtpo = remote prune origin
+	s = status -s
+	sh = stash
+	sm = submodule
+	so = show
+	sr = remote show origin
+	st = status
+	t = tag
+	ta = tag -a
+	v = version
+[push]
+	default = simple
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
