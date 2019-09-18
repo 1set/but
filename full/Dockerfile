@@ -1,4 +1,4 @@
-FROM an63/ubuntool-lite
+FROM an63/butlite
 LABEL maintainer="an9an63@gmail.com"
 
 ARG ROOT_PATH=/root

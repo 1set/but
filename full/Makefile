@@ -2,7 +2,7 @@
 
 DOCKER=docker
 
-DOCKER_IMG_NAME=ubuntool
+DOCKER_IMG_NAME=but
 APP_VERSION=v0.1
 
 COMMIT_ID=$(shell git rev-parse --short head)

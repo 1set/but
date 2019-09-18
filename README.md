@@ -1,18 +1,18 @@
-# ubuntool
+# but℠
 
-Ubuntu-based toolset images for developers
+**b**atteries-included **u**buntu-based **t**oolset image for developers
 
 ## usage
 
 full version:
 
 ~~~bash
-docker pull an63/ubuntool
+docker pull an63/but
 ~~~
 
 lite version:
 
 ~~~bash
-docker pull an63/ubuntool-lite
+docker pull an63/butlite
 ~~~
 
