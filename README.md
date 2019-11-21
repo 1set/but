@@ -7,12 +7,12 @@
 full version:
 
 ~~~bash
-docker pull an63/but
+docker pull 1set/but
 ~~~
 
 lite version:
 
 ~~~bash
-docker pull an63/butlite
+docker pull 1set/butlite
 ~~~
 
