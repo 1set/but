@@ -20,4 +20,4 @@ RUN set -eux; \
         ln -sf python3 python && \
         ln -sf pip3 pip;
 
-ENTRYPOINT zsh
+CMD ["/bin/zsh"]

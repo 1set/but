@@ -16,4 +16,4 @@ RUN set -eux; \
 
 COPY resource/.* ${ROOT_PATH}/
 
-ENTRYPOINT zsh
+CMD ["/bin/zsh"]
