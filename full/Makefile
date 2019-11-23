@@ -3,7 +3,7 @@
 DOCKER=docker
 
 DOCKER_IMG_NAME=but
-APP_VERSION=v0.1
+APP_VERSION=0.0.1
 
 COMMIT_ID=$(shell git rev-parse --short HEAD)
 BUILD_DATE=$(shell date '+%Y%m%d')
@@ -34,6 +34,6 @@ push:
 	$(eval VERSION_TAG=$(shell $(DOCKER) run --rm --name "$(DOCKER_IMG_NAME)_test" -v $$PWD/list_version.sh:/test.sh $(DOCKER_IMG_NAME) /test.sh | python3 script/get_tagname.py))
 	$(eval DOCKER_IMG_FULL_NAME=$(DOCKER_IMG_FULL_NAME_PREFIX)-$(VERSION_TAG))
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME)
-	$(DOCKER) push $(DOCKER_IMG_FULL_NAME)
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_LATEST)
+	$(DOCKER) push $(DOCKER_IMG_FULL_NAME)
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME_LATEST)
