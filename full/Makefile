@@ -25,13 +25,13 @@ inspect:
 	docker images | grep $(DOCKER_IMG_NAME)
 	$(DOCKER) history $(DOCKER_IMG_NAME)
 test:
-	$(DOCKER) run --rm --name "$(DOCKER_IMG_NAME)_test" -v $$PWD/build_test.sh:/test.sh $(DOCKER_IMG_NAME) /test.sh | python3 script/check_test_result.py
+	$(DOCKER) run --rm --name "$(DOCKER_IMG_NAME)_test" -v $$PWD/list_version.sh:/test.sh $(DOCKER_IMG_NAME) /test.sh | python3 script/check_versions.py
 run:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_app" $(DOCKER_IMG_NAME)
 runprod:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_prod_app" $(DOCKER_IMG_FULL_NAME_LATEST)
 push:
-	$(eval VERSION_TAG=$(shell $(DOCKER) run --rm --name "$(DOCKER_IMG_NAME)_test" -v $$PWD/build_test.sh:/test.sh $(DOCKER_IMG_NAME) /test.sh | python3 script/get_tagname.py))
+	$(eval VERSION_TAG=$(shell $(DOCKER) run --rm --name "$(DOCKER_IMG_NAME)_test" -v $$PWD/list_version.sh:/test.sh $(DOCKER_IMG_NAME) /test.sh | python3 script/get_tagname.py))
 	$(eval DOCKER_IMG_FULL_NAME=$(DOCKER_IMG_FULL_NAME_PREFIX)-$(VERSION_TAG))
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME)
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME)

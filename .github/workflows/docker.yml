@@ -1,19 +1,46 @@
-name: CI
+name: build
 
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - '**.txt'
+  schedule:
+    - cron:  '0 * * * *'
 
 jobs:
-  build:
 
+  build:
+    name: Build & Publish
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Build lite version
+    - name: Check out source code
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 2
+
+    - name: Build image
+      shell: bash
       run: |
-        cd lite
-        make buildnew
-    - name: Build full version
+        make build
+
+    - name: Test image
+      shell: bash
       run: |
-        cd full
-        make buildnew
+        make test
+        make inspect
+
+    - name: Push to Docker Hub
+      if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
+      shell: bash
+      run: |
+          docker login docker.io -u ${{ secrets.dockerhub_registry_username }} -p ${{ secrets.dockerhub_registry_password }}
+          make push
+
+    - name: Push to GitHub Packages
+      if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
+      shell: bash
+      run: |
+          docker login docker.pkg.github.com -u ${{ secrets.github_packages_username }} -p ${{ secrets.github_packages_token }}
+          make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
