@@ -19,6 +19,9 @@ build:
 	$(DOCKER) build -t $(DOCKER_IMG_NAME) .
 buildnew:
 	$(DOCKER) build --pull --no-cache -t $(DOCKER_IMG_NAME) .
+buildci:
+	$(DOCKER) build --pull --no-cache -t $(DOCKER_IMG_NAME) .
+	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_LATEST)
 clean:
 	$(DOCKER) rmi -f $(DOCKER_IMG_NAME)
 inspect:

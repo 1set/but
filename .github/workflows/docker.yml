@@ -20,27 +20,34 @@ jobs:
       with:
         fetch-depth: 2
 
-    - name: Build image
+    - name: Build images
       shell: bash
       run: |
-        make build
+        cd $GITHUB_WORKSPACE/lite && make buildci
+        cd $GITHUB_WORKSPACE/full && make buildci
 
-    - name: Test image
+    - name: Test image - full
       shell: bash
       run: |
+        cd $GITHUB_WORKSPACE/full
         make test
         make inspect
+
+    - name: Registry login
+      if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
+      shell: bash
+      run: |
+          docker login docker.io -u ${{ secrets.dockerhub_registry_username }} -p ${{ secrets.dockerhub_registry_password }}
+          docker login docker.pkg.github.com -u ${{ secrets.github_packages_username }} -p ${{ secrets.github_packages_token }}
 
     - name: Push to Docker Hub
       if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
       shell: bash
       run: |
-          docker login docker.io -u ${{ secrets.dockerhub_registry_username }} -p ${{ secrets.dockerhub_registry_password }}
           make push
 
     - name: Push to GitHub Packages
       if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
       shell: bash
       run: |
-          docker login docker.pkg.github.com -u ${{ secrets.github_packages_username }} -p ${{ secrets.github_packages_token }}
           make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
