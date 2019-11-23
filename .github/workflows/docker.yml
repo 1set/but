@@ -44,10 +44,12 @@ jobs:
       if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
       shell: bash
       run: |
-          make push
+          cd $GITHUB_WORKSPACE/lite && make push
+          cd $GITHUB_WORKSPACE/full && make push
 
     - name: Push to GitHub Packages
       if: (github.event_name == 'push' && endsWith(github.ref, '/master'))
       shell: bash
       run: |
-          make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
+          cd $GITHUB_WORKSPACE/lite && make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
+          cd $GITHUB_WORKSPACE/full && make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
