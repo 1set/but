@@ -7,7 +7,7 @@ WORKDIR ${ROOT_PATH}
 
 RUN set -eux; \
     apt-get update \
-        && apt-get install -y --no-install-recommends software-properties-common apt-transport-https ca-certificates \
+        && apt-get install -y --no-install-recommends apt-utils software-properties-common apt-transport-https ca-certificates \
             zsh time curl wget less openssh-client git tmux zip unzip p7zip-full vim htop iftop rsync lynx \
             iproute2 iputils-ping iputils-tracepath dnsutils net-tools ngrep netcat \
         && apt-get clean && rm -rf /var/lib/apt/lists/* ; \

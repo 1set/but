@@ -3,7 +3,7 @@
 DOCKER=docker
 
 DOCKER_IMG_NAME=but
-APP_VERSION=0.0.1
+APP_VERSION=0.0.2
 
 COMMIT_ID=$(shell git rev-parse --short HEAD)
 BUILD_DATE=$(shell date '+%Y%m%d')

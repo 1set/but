@@ -6,6 +6,7 @@ pattern_flag = re.IGNORECASE
 pattern_map = {
     "go": re.compile(r"go(\d+)\.(\d+)\.(\d+)\s", pattern_flag),
     "python": re.compile(r"^Python\s+(\d+)\.(\d+)\.(\d+)$", pattern_flag),
+    "pip": re.compile(r"^pip\s+(\d+)\.(\d+)\.(\d+)\s", pattern_flag),
     "node": re.compile(r"^v(\d+)\.(\d+)\.(\d+)$", pattern_flag),
     "npm": re.compile(r"^(\d+)\.(\d+)\.(\d+)$", pattern_flag),
 }
@@ -14,8 +15,7 @@ pattern_map = {
 def version_string(version):
     if version is None:
         return ""
-    else:
-        return str.join(".", [str(n) for n in version])
+    return str.join(".", [str(n) for n in version])
 
 
 def extract_version(lang, raw):
