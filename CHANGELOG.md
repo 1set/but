@@ -2,7 +2,9 @@
 
 **Update**:
 
-* Upgrade Python 3.6 to 3.8 for **but**
+* Add **apt-utils** in both
+* Add **libssl-dev**, **libffi-dev** in *full*
+* Upgrade Python 3.6 to 3.8 in *full*
 * Shorten daily build tagname
 
 
@@ -11,7 +13,7 @@
 **Update**:
 
 * Migrate from [an63/butlite](https://hub.docker.com/r/an63/butlite) and [an63/but](https://hub.docker.com/r/an63/but)
-* Add missing **ssh**, **unzip** and **netstat**
+* Add missing **ssh**, **unzip** and **netstat** in both
 * Replace `ENTRYPOINT` with `CMD`
 
 [**Source Code**](https://github.com/1set/but/releases/tag/0.0.1)
