@@ -16,9 +16,10 @@ RUN set -eux; \
         && apt-get install -y --no-install-recommends build-essential libssl-dev libffi-dev gcc golang-go go-dep nodejs \
             python3.8-dev python3.8-distutils python3-pip python3-setuptools \
         && apt-get clean && rm -rf /var/lib/apt/lists/* ; \
-    go get -u github.com/kardianos/govendor; \
+    go get -u github.com/kardianos/govendor ; \
+    python3.8 -m pip install -U pip setuptools ; \
     cd /usr/bin && \
         ln -sf python3.8 python && \
-        ln -sf pip3 pip;
+        ln -sf pip3.8 pip;
 
 CMD ["/bin/zsh"]
