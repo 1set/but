@@ -6,6 +6,9 @@ go version
 echo -n "python:"
 python --version
 
+echo -n "pip:"
+pip --version
+
 echo -n "node:"
 node --version
 

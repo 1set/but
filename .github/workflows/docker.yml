@@ -26,7 +26,7 @@ jobs:
         cd $GITHUB_WORKSPACE/lite && make buildci
         cd $GITHUB_WORKSPACE/full && make buildci
 
-    - name: Test image - full
+    - name: Test 'full' image
       shell: bash
       run: |
         cd $GITHUB_WORKSPACE/full
