@@ -15,8 +15,7 @@ pattern_map = {
 def version_string(version):
     if version is None:
         return ""
-    else:
-        return str.join(".", [str(n) for n in version])
+    return str.join(".", [str(n) for n in version])
 
 
 def extract_version(lang, raw):

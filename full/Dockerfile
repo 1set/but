@@ -1,4 +1,4 @@
-FROM 1set/butlite
+FROM 1set/butlite:latest
 LABEL maintainer="an9an63@gmail.com"
 
 ARG ROOT_PATH=/root
