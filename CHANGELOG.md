@@ -1,3 +1,11 @@
+## Version 0.0.3 - 2020-01-16
+
+**Update**:
+
+* Add **tig**, **telnet** in both
+* Skip oh-my-zsh update checking script
+
+
 ## Version 0.0.2 - 2019-11-24
 
 **Update**:
@@ -6,6 +14,24 @@
 * Add **libssl-dev**, **libffi-dev** in *full*
 * Upgrade Python 3.6 to 3.8 in *full*
 * Shorten daily build tagname
+
+**Pull Last Build**:
+
+```bash
+# lite
+docker pull 1set/butlite:0.0.2-f70f17a-20200116
+
+# full
+docker pull 1set/but:0.0.2-f70f17a-20200116-go1.13.4-python3.8.1-node12.14.1
+```
+
+**Last Build Content**:
+
+* Go: 1.13.4
+* Python: 3.8.1
+* pip: 19.3.1
+* Node.js: 12.14.1
+* npm: 6.13.4
 
 
 ## Version 0.0.1 - 2019-11-22
