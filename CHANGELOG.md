@@ -1,3 +1,10 @@
+## Version 0.0.4 - 2020-03-01
+
+**Update**:
+
+* Add **figlet** in *full*
+* Remove **python3.8-distutils** from *full*
+
 ## Version 0.0.3 - 2020-01-16
 
 **Update**:
@@ -5,6 +12,23 @@
 * Add **tig**, **telnet** in both
 * Skip oh-my-zsh update checking script
 
+**Pull Last Build**:
+
+```bash
+# lite
+docker pull 1set/butlite:0.0.3-0bb3fea-20200225
+
+# full
+docker pull 1set/but:0.0.3-0bb3fea-20200225-go1.13.4-python3.8.1-node12.16.1
+```
+
+**Last Build Content**:
+
+* Go: 1.13.4
+* Python: 3.8.1
+* pip: 20.0.2
+* Node.js: 12.16.1
+* npm: 6.13.4
 
 ## Version 0.0.2 - 2019-11-24
 

@@ -1,14 +1,13 @@
 import re
 import sys
 
-
 pattern_flag = re.IGNORECASE
 pattern_map = {
-    "go": re.compile(r"go(\d+)\.(\d+)\.(\d+)\s", pattern_flag),
-    "python": re.compile(r"^Python\s+(\d+)\.(\d+)\.(\d+)$", pattern_flag),
-    "pip": re.compile(r"^pip\s+(\d+)\.(\d+)\.(\d+)\s", pattern_flag),
-    "node": re.compile(r"^v(\d+)\.(\d+)\.(\d+)$", pattern_flag),
-    "npm": re.compile(r"^(\d+)\.(\d+)\.(\d+)$", pattern_flag),
+    "go": re.compile(r"go(\d+)\.(\d+)(\.(\d+))?\s", pattern_flag),
+    "python": re.compile(r"^Python\s+(\d+)\.(\d+)(\.(\d+))?$", pattern_flag),
+    "pip": re.compile(r"^pip\s+(\d+)\.(\d+)(\.(\d+))?\s", pattern_flag),
+    "node": re.compile(r"^v(\d+)\.(\d+)(\.(\d+))?$", pattern_flag),
+    "npm": re.compile(r"^(\d+)\.(\d+)(\.(\d+))?$", pattern_flag),
 }
 
 
@@ -28,7 +27,8 @@ def extract_version(lang, raw):
     match = found.groups()
     version = []
     for s in match:
-        version.append(int(s))
+        if s is not None and not s.startswith("."):
+            version.append(int(s))
     return tuple(version)
 
 

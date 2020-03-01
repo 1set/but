@@ -3,7 +3,7 @@
 DOCKER=docker
 
 DOCKER_IMG_NAME=butlite
-APP_VERSION=0.0.3
+APP_VERSION=0.0.4
 
 COMMIT_ID=$(shell git rev-parse --short HEAD)
 BUILD_DATE=$(shell date '+%Y%m%d')
