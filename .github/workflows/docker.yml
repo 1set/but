@@ -19,15 +19,6 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Notify me via IFTTT if it fails
-        uses: cixo/ifttt-trigger@v0.3
-        with:
-          key: ${{ secrets.ifttt_maker_key }}
-          event: github_1set_build
-          value1: ${{ github.repository }}
-          value2: ${{ github.event_name }}
-          value3: ${{ job.status }}
-
       - name: Build images
         shell: bash
         run: |
@@ -61,3 +52,13 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/lite && make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
           cd $GITHUB_WORKSPACE/full && make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
+
+      - name: Notify me via IFTTT if it fails
+        if: failure()
+        uses: cixo/ifttt-trigger@v0.3
+        with:
+          key: ${{ secrets.ifttt_maker_key }}
+          event: github_1set_build
+          value1: ${{ github.repository }}
+          value2: ${{ github.event_name }}
+          value3: ${{ job.status }}
