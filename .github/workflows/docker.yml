@@ -54,7 +54,7 @@ jobs:
           cd $GITHUB_WORKSPACE/full && make push DOCKER_REGISTRY=docker.pkg.github.com/1set/but
 
       - name: Notify me via IFTTT if it fails
-        if: failure()
+        if: failure() && endsWith(github.ref, '/master'))
         uses: cixo/ifttt-trigger@v0.3
         with:
           key: ${{ secrets.ifttt_maker_key }}
