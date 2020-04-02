@@ -22,7 +22,7 @@ jobs:
       - name: Notify me via IFTTT if it fails
         uses: cixo/ifttt-trigger@v0.3
         with:
-          key: abc
+          key: ${{ secrets.ifttt_maker_key }}
           event: github_1set_build
           value1: 123
 
