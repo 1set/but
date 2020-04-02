@@ -22,11 +22,9 @@ jobs:
       - name: Notify me via IFTTT if it fails
         uses: cixo/ifttt-trigger@v0.3
         with:
-          key: ${{ secrets.ifttt_maker_key }}
+          key: abc
           event: github_1set_build
-          value1: ${{ github.repository }}
-          value2: ${{ github.event }}
-          value3: ${{ job.status }}
+          value1: 123
 
       - name: Build images
         shell: bash
