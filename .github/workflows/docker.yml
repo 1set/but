@@ -20,6 +20,15 @@ jobs:
       with:
         fetch-depth: 2
 
+    - name: Notify me if it fails
+      uses: cixo/ifttt-trigger@v0.3
+      with:
+        key: ${{ secrets.github_but_build }}
+        event: "github_1set_build"
+        value1: ${{ github.repository	}}
+        value2: ${{ github.event }}
+        value3: ${{ job.status }}
+
     - name: Build images
       shell: bash
       run: |
