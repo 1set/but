@@ -3,7 +3,7 @@
 DOCKER=docker
 
 DOCKER_IMG_NAME=butlite
-APP_VERSION=0.0.4
+APP_VERSION=0.0.5
 
 COMMIT_ID=$(shell git rev-parse --short HEAD)
 BUILD_DATE=$(shell date '+%Y%m%d')
@@ -30,8 +30,9 @@ run:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_app" $(DOCKER_IMG_NAME)
 runprod:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_prod_app" $(DOCKER_IMG_FULL_NAME_LATEST)
-push:
+tag:
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_TAG)
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_LATEST)
+push: tag
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME_TAG)
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME_LATEST)

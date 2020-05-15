@@ -25,10 +25,10 @@ ZSH_THEME="re5et"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -107,3 +107,5 @@ function mcd() { mkdir -p "$1" && cd "$1"; }
 alias ll='ls -lash'
 alias g=git
 alias t=tmux
+alias ta='tmux attach -t'
+alias tls='tmux ls'
