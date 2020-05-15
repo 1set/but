@@ -11,10 +11,10 @@ ENV PATH=$PATH:$GOBIN
 WORKDIR ${ROOT_PATH}
 
 RUN set -eux; \
-    apt-get update && apt-get install -y --no-install-recommends gpg-agent figlet ; \
+    apt-get update && apt-get install -y --no-install-recommends gpg-agent ; \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - ; \
     add-apt-repository -y ppa:longsleep/golang-backports && add-apt-repository -y ppa:deadsnakes/ppa && apt-get update \
-        && apt-get install -y --no-install-recommends build-essential libssl-dev libffi-dev gcc golang-go go-dep nodejs \
+        && apt-get install -y --no-install-recommends build-essential libssl-dev libffi-dev gcc golang-go go-dep nodejs figlet \
                 python3.8-dev python3-pip python3-setuptools \
         && apt-get clean && rm -rf /var/lib/apt/lists/* ; \
     go get -u github.com/kardianos/govendor ; \
