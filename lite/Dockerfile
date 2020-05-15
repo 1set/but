@@ -1,7 +1,10 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 LABEL maintainer="an9an63@gmail.com"
 
+ARG DEBIAN_FRONTEND=noninteractive
 ARG ROOT_PATH=/root
+
+ENV SHELL=/usr/bin/zsh
 
 WORKDIR ${ROOT_PATH}
 
