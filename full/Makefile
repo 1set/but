@@ -32,10 +32,11 @@ run:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_app" $(DOCKER_IMG_NAME)
 runprod:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_prod_app" $(DOCKER_IMG_FULL_NAME_LATEST)
-push:
+tag:
 	$(eval VERSION_TAG=$(shell $(DOCKER) run --rm --name "$(DOCKER_IMG_NAME)_test" -v $$PWD/list_version.sh:/test.sh $(DOCKER_IMG_NAME) /test.sh | python3 script/get_tagname.py))
 	$(eval DOCKER_IMG_FULL_NAME=$(DOCKER_IMG_FULL_NAME_PREFIX)-$(VERSION_TAG))
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME)
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_LATEST)
+push: tag
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME)
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME_LATEST)

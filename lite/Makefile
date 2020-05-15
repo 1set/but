@@ -30,8 +30,9 @@ run:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_app" $(DOCKER_IMG_NAME)
 runprod:
 	$(DOCKER) run --rm -it --name "$(DOCKER_IMG_NAME)_prod_app" $(DOCKER_IMG_FULL_NAME_LATEST)
-push:
+tag:
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_TAG)
 	$(DOCKER) tag $(DOCKER_IMG_NAME) $(DOCKER_IMG_FULL_NAME_LATEST)
+push: tag
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME_TAG)
 	$(DOCKER) push $(DOCKER_IMG_FULL_NAME_LATEST)
