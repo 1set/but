@@ -1,3 +1,8 @@
+## Version 0.0.6 - 2020-11-17
+
+- Add more aliases for Zsh in both
+- Upgrade Go to v1.15.5 in _full_
+
 ## Version 0.0.5 - 2020-05-15
 
 - Upgrade to **Ubuntu 20.04** in both

@@ -1,6 +1,6 @@
 
 minimum_version_required = {
-    "go": (1, 13),
+    "go": (1, 15),
     "python": (3, 8),
     "pip": (19,),
     "node": (12,),

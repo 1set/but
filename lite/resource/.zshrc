@@ -103,9 +103,52 @@ export TERM=xterm-256color
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 function mcd() { mkdir -p "$1" && cd "$1"; }
+function jv() { < "$1" jq -C . | less -R }
 
-alias ll='ls -lash'
+function mktgz() {
+    if [[ -z "$1" ]]; then
+        echo "missing source target"
+        return 1
+    else
+        tar cvzf "${1%%/}.tgz" "${1%%/}/"
+    fi
+}
+
+function mkzip() {
+    if [[ -z "$1" ]]; then
+        echo "missing source target"
+        return 1
+    else
+        zip -r "${1%%/}.zip" "$1"
+    fi
+}
+
+function dl() {
+    case $# in
+        2) curl -L -o "$2" "$1" ;;
+        1) curl -L -O "$1" ;;
+        0) echo "missing url";;
+        *) echo "wtf?"
+    esac
+}
+
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -lashF'
+alias ls='ls --color=auto'
 alias g=git
 alias t=tmux
+alias ts='tmux ls'
 alias ta='tmux attach -t'
-alias tls='tmux ls'
+
+function tn() {
+    if [[ -z "$1" ]]; then
+        tmux new-session
+    else
+        tmux new-session -s "$1"
+    fi
+}
+
+for ((i = 0; i <= 32; i++)); do
+    alias ta"$i"="tmux attach -t $i"
+done

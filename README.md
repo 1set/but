@@ -9,13 +9,12 @@
 
 full version:
 
-~~~bash
+```bash
 docker pull 1set/but
-~~~
+```
 
 lite version:
 
-~~~bash
+```bash
 docker pull 1set/butlite
-~~~
-
+```
