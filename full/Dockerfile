@@ -15,7 +15,7 @@ RUN set -eux; \
     apt-get update && apt-get install -y --no-install-recommends gpg-agent ; \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - ; \
     cd /tmp ; \
-	wget -qL -O go.tgz "https://golang.org/dl/go1.15.5.linux-amd64.tar.gz" && \
+	curl -sL -o go.tgz "https://golang.org/dl/go1.15.5.linux-amd64.tar.gz" && \
 		echo "9a58494e8da722c3aef248c9227b0e9c528c7318309827780f16220998180a0d *go.tgz" | sha256sum -c - ; \
 		tar -C /usr/local -xzf go.tgz && rm -f go.tgz && go version && mkdir -p ${GO_PATH} ; \
     apt-get update && apt-get install -y --no-install-recommends \

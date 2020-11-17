@@ -50,5 +50,5 @@ jobs:
         if: ((github.event_name == 'push' || github.event_name == 'schedule') && endsWith(github.ref, '/master'))
         shell: bash
         run: |
-          cd $GITHUB_WORKSPACE/lite && make push DOCKER_REGISTRY=ghcr.io/1set/but
-          cd $GITHUB_WORKSPACE/full && make push DOCKER_REGISTRY=ghcr.io/1set/but
+          cd $GITHUB_WORKSPACE/lite && make push DOCKER_REGISTRY=ghcr.io/1set
+          cd $GITHUB_WORKSPACE/full && make push DOCKER_REGISTRY=ghcr.io/1set
